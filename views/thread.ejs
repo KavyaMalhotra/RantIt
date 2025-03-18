@@ -49,7 +49,16 @@
                         <!-- 🔹 Reply Actions -->
                         <div class="reply-actions">
                             <% if (user && user.id === reply.user_id) { %>
-                                <button class="edit-reply-btn" data-reply-id="<%= reply.id %>">Edit</button>
+                                <!-- Edit Button (Only triggers the visibility of the form) -->
+                                <button type="button" class="edit-reply-btn" onclick="toggleEditForm(<%= reply.id %>)">Edit</button>
+                        
+                                <!-- Form for Editing Reply (Initially Hidden) -->
+                                <form id="edit-reply-form-<%= reply.id %>" action="/edit-reply/<%= reply.id %>" method="POST" class="edit-form" style="display:none;">
+                                    <textarea name="content" placeholder="Edit your reply" required><%= reply.content %></textarea>
+                                    <button type="submit" class="save-changes-btn">Save Changes</button>
+                                </form>
+                        
+                                <!-- Delete Reply Form -->
                                 <form action="/delete-reply/<%= reply.id %>" method="POST">
                                     <button type="submit">Delete</button>
                                 </form>
@@ -125,6 +134,16 @@
             setTimeout(() => { flashMessage.style.display = "none"; }, 5000);
         }
     });
+    // Toggle the visibility of the edit form when "Edit" button is clicked
+    function toggleEditForm(replyId) {
+        const editFormContainer = document.getElementById(`edit-reply-form-${replyId}`);
+        // Toggle display between 'none' and 'block'
+        if (editFormContainer.style.display === 'none' || editFormContainer.style.display === '') {
+            editFormContainer.style.display = 'block';
+        } else {
+            editFormContainer.style.display = 'none';
+        }
+    }
 </script>
 
 <script src="/js/script.js"></script>
