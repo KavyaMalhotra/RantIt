@@ -89,7 +89,7 @@ CREATE TABLE public.replies (
 ### 4. Deleted Rants Table
 ```sql
 CREATE TABLE deleted_rants (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     user_id INT,
     title VARCHAR(255),
     content TEXT,
@@ -101,7 +101,7 @@ CREATE TABLE deleted_rants (
 ### 5. Deleted Replies Table
 ```sql
 CREATE TABLE deleted_replies (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     original_reply_id INT,
     rant_id INT,
     user_id INT,
