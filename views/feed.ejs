@@ -1,0 +1,45 @@
+<% if (user) { %>
+    <%- include('partials/user_header') %>
+<% } else { %>
+    <%- include('partials/header') %>
+<% } %>
+
+<h1 id="feed-heading">Explore Rants</h1>
+
+<!-- 🔹 Filter Dropdown -->
+<form id="filterForm" action="/feed" method="GET">
+    <label for="tags">Filter by Topic:</label>
+    <select id="tags" name="tags" onchange="this.form.submit()">
+        <option value="random" <%= (filter === 'random' ? 'selected' : '') %>>Random</option>
+        <option value="Toxic Friends" <%= (filter === 'Toxic Friends' ? 'selected' : '') %>>Toxic Friends</option>
+        <option value="Parental Pressure" <%= (filter === 'Parental Pressure' ? 'selected' : '') %>>Parental Pressure</option>
+        <option value="Relationship Issues" <%= (filter === 'Relationship Issues' ? 'selected' : '') %>>Relationship Issues</option>
+        <option value="Academic & Work Woes" <%= (filter === 'Academic & Work Woes' ? 'selected' : '') %>>Academic & Work Woes</option>
+        <option value="Society" <%= (filter === 'Society' ? 'selected' : '') %>>Society</option>
+        <option value="Crime Fighters" <%= (filter === 'Crime Fighters' ? 'selected' : '') %>>Crime Fighters</option>
+    </select>
+    
+</form>
+
+<!-- 🔹 Rants Section -->
+<div class="rants-section">
+    <% if (rants.length > 0) { %>
+        <% rants.forEach(rant => { %>
+            <div class="rant-card" onclick="location.href='/thread/<%= rant.id %>'">
+                <h2 class="rant-title"><%= rant.title %></h2>                
+                    <p class="rant-content">
+                        <%= rant.content.split(' ').slice(0, 5).join(' ') %>
+                        <%= rant.content.split(' ').length > 5 ? ' ...' : '' %>
+                    </p>
+                    <p class="rant-topic"><%= rant.tags %></p>
+                    <span class="rant-meta">Posted on <%= new Date(rant.created_at).toLocaleDateString() %></span>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>No rants found.</p>
+    <% } %>
+</div>
+
+<script src="/js/script.js"></script> <!-- ✅ Include JavaScript -->
+</body>
+</html>

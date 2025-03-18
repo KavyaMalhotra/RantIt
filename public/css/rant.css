@@ -1,0 +1,148 @@
+/* 🎯 Main Rant Container */
+.rant-container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 30px;
+    background: #FFF8E7;  /* Soft Warm Cream */
+    border: 3px solid #FFB200; /* Bright Yellow Border */
+    border-radius: 18px;
+    box-shadow: 
+        4px 4px 15px rgba(255, 178, 0, 0.3),  
+        -4px -4px 15px rgba(235, 91, 0, 0.3); /* Dual Glow */
+    color: #001F3F;
+    font-family: "Poppins", sans-serif;
+}
+
+/* 🟡 Heading */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #EB5B00;  /* Fiery Orange */
+    text-shadow: 0 4px 10px rgba(235, 91, 0, 0.5);
+}
+
+/* 📝 Labels */
+label {
+    font-weight: 600;
+    display: block;
+    margin-top: 12px;
+    color: #EB5B00;
+}
+
+/* ✏️ Input Fields & Textarea */
+input, textarea, select {
+    width: 95%;  /* Fixed width issue */
+    padding: 12px;
+    margin-top: 5px;
+    background: #FFFFFF;
+    color: #001F3F;
+    border: 2px solid #FFB200;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none; /* Cleaner Focus */
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ✅ Focus Effect */
+input:focus, textarea:focus, select:focus {
+    border-color: #EB5B00;
+    box-shadow: 0 0 12px rgba(235, 91, 0, 0.4);
+}
+
+/* 🚨 Flash Message */
+.flash-message {
+    background-color: #E4003A;
+    color: #FFF;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(228, 0, 58, 0.4);
+}
+
+/* 🔥 Rant Button */
+button.rant-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: #EB5B00; 
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(235, 91, 0, 0.3);
+    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+button.rant-btn:hover {
+    background: #FFB200;
+    color: #001F3F;
+    transform: translateY(-3px) scale(1.05); 
+    box-shadow: 0 6px 15px rgba(255, 178, 0, 0.5);
+}
+
+/* 🔙 Back Button */
+.back-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: linear-gradient(145deg, #EB5B00, #FFB200); 
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border: none; 
+    padding: 0.5rem 1.5rem;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(235, 91, 0, 0.3);
+    transition: 
+        background 0.3s ease,
+        transform 0.2s ease, 
+        box-shadow 0.3s ease;
+}
+
+/* ➡️ Arrow Animation */
+.back-button::before {
+    content: '⬅';
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+/* 🚀 Hover Effect */
+.back-button:hover {
+    background: #FFB200;
+    color: #001F3F;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(255, 178, 0, 0.5);
+}
+
+/* 🟢 Arrow Slide Effect */
+.back-button:hover::before {
+    transform: translateX(-5px);
+}
+
+/* 🎯 Click/Active Effect */
+.back-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 8px rgba(235, 91, 0, 0.6);
+}
+
+/* 📱 Hide on Mobile Devices */
+@media (max-width: 800px) {
+    .back-button {
+        display: none;
+    }
+}
+
+/* 🌌 Background */
+body {
+    background: #FFF3D6; /* Softer Yellow Background */
+}

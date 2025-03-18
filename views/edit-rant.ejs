@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/rant.css">
+    <title>Edit Your Rant ✏️</title>
+</head>
+<body>
+    <!-- 🔹 Back Button -->
+    <a href="/" class="back-button">Back</a>
+
+    <div class="rant-container">
+        <h1>Edit Your Rant ✏️</h1>
+
+        <!-- 🔹 Flash Message (Only display if it exists) -->
+        <% if (typeof flashMessage !== 'undefined' && flashMessage) { %>
+            <div class="flash-message">
+                <p><%= flashMessage %></p>
+            </div>
+        <% } %>
+
+        <form action="/update-rant/<%= rant.id %>" method="POST">
+            <!-- 🔹 Rant Title -->
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="<%= rant.title %>" required>
+
+            <!-- 🔹 Rant Content -->
+            <label for="content">Your Rant:</label>
+            <textarea id="content" name="content" rows="5" required><%= rant.content %></textarea>
+
+            <!-- 🔹 Rant Topic Selection -->
+            <label for="tags">Choose a Topic:</label>
+            <select id="tags" name="tags" required>
+                <option value="" disabled>Select a topic...</option>
+                <option value="Toxic Friends" <%= rant.tags === 'Toxic Friends' ? 'selected' : '' %>>Toxic Friends</option>
+                <option value="Parental Pressure" <%= rant.tags === 'Parental Pressure' ? 'selected' : '' %>>Parental Pressure</option>
+                <option value="Relationship Issues" <%= rant.tags === 'Relationship Issues' ? 'selected' : '' %>>Relationship Issues</option>
+                <option value="Academic & Work Woes" <%= rant.tags === 'Academic & Work Woes' ? 'selected' : '' %>>Academic & Work Woes</option>
+                <option value="Society" <%= rant.tags === 'Society' ? 'selected' : '' %>>Society</option>
+                <option value="Crime Fighters" <%= rant.tags === 'Crime Fighters' ? 'selected' : '' %>>Crime Fighters</option>
+            </select>
+
+            <!-- 🔹 Submit Button -->
+            <button type="submit" class="rant-btn">Confirm Edit</button>
+        </form>
+    </div>
+</body>
+</html>

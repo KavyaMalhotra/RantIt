@@ -1,0 +1,608 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600&display=swap');
+
+/* 🎨 Global Styling */
+body {
+    background-color: #1b1b3a; /* Dark Blue */
+    color: #f4f4f4; /* Light Gray */
+    font-family: 'Rajdhani', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    font-weight: 600;  /* Makes it bold */
+    text-transform: uppercase;
+    letter-spacing: 1.5px; /* Slight spacing for a futuristic look */
+}
+
+/* 🟣 Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #6a00f4; /* Electric Purple */
+    padding: 15px 20px;
+}
+
+.logo h1 {
+    color: #f4f4f4; /* Light Gray */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #0aff99; /* Neon Green */
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+    background-color: #9d4edd; /* Soft Purple */
+}
+
+/* 📜 Footer */
+footer {
+    background-color: #6a00f4; /* Same as navbar */
+    text-align: center;
+    padding: 10px;
+    color: #f4f4f4; /* Light Gray */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+/* 📍 Center Body Content */
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: 50px auto; /* Centers content */
+    text-align: center;
+}
+
+/* 📝 Main Heading */
+.main-heading {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #0aff99; /* Neon Green */
+    text-shadow: 0px 0px 10px rgba(10, 255, 153, 0.8); /* Subtle glow */
+}
+
+/* 📜 Paragraph Styling */
+p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #f4f4f4; /* Light Gray */
+}
+
+/* 🎭 Content Box Style */
+.content-box {
+    background: rgba(255, 255, 255, 0.1); /* Transparent white */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px); /* Soft blur effect */
+    margin-top: 20px;
+    border: 2px solid #9d4edd; /* Soft Purple Border */
+}
+
+/* 🟢 Buttons */
+button {
+    background: #0aff99; /* Neon Green */
+    color: #1b1b3a; /* Dark Blue */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #9d4edd; /* Soft Purple */
+    color: #f4f4f4;
+    transform: scale(1.05);
+}
+
+/* 🌍 Center the Register Box */
+.register-box {
+    width: 400px;
+    background: rgba(255, 255, 255, 0.1); /* Glassmorphism Effect */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px); /* Blurred Glass Effect */
+    margin: 50px auto;
+    text-align: center;
+    border: 2px solid #9d4edd; /* Soft Purple Border */
+}
+
+/* 🎭 Input Fields */
+.register-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #9d4edd; /* Soft Purple */
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #f4f4f4;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🌟 Input Hover & Focus */
+.register-box input:focus {
+    border-color: #0aff99; /* Neon Green Glow */
+    box-shadow: 0px 0px 8px rgba(10, 255, 153, 0.8);
+}
+
+/* 🔘 Register Button */
+.register-box button {
+    background: #0aff99; /* Neon Green */
+    color: #1b1b3a; /* Dark Blue */
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+}
+
+/* 🔥 Button Hover Effect */
+.register-box button:hover {
+    background: #9d4edd; /* Soft Purple */
+    color: #f4f4f4;
+    transform: scale(1.05);
+}
+
+/* 📜 Login Link */
+.register-box p {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.register-box a {
+    color: #0aff99;
+    text-decoration: none;
+}
+
+.register-box a:hover {
+    text-decoration: underline;
+}
+
+
+/* 🔘 Style Navbar Buttons */
+.nav-button {
+    background: none;
+    border: none;
+    color: #0aff99; /* Neon Green */
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: background 0.3s ease-in-out;
+}
+
+.nav-button:hover {
+    background: #9d4edd; /* Soft Purple */
+    color: #f4f4f4;
+    border-radius: 5px;
+}
+
+/* 🔴 Logout Button (Red for warning) */
+.logout-btn {
+    color: #ff4d6d; /* Neon Red */
+}
+
+.logout-btn:hover {
+    background: #ff4d6d;
+    color: white;
+}
+
+/* ✅ Profile Dropdown */
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* ✅ Profile Icon (Neon Green) */
+.profile-icon {
+    width: 2.3rem; /* Slightly smaller */
+    height: 2.3rem;
+    background-color: #0aff99; /* Neon Green */
+    color: #1b1b3a; /* Dark Blue for contrast */
+    font-size: 1.1rem; /* Adjusted */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-family: 'Rajdhani', sans-serif; /* ✅ Custom Font */
+}
+
+/* ✅ Hover Effect for Profile Icon */
+.profile-icon:hover {
+    background-color: #0acc80; /* Slightly darker Neon Green */
+}
+
+/* ✅ Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: #1b1b3a; /* Dark Blue Background */
+    border-radius: 3px; /* ✅ Less Rounded */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 140px; /* ✅ Smaller Box */
+    list-style: none;
+    padding: 0.5rem 0;
+    text-align: left;
+    font-family: 'Rajdhani', sans-serif; /* ✅ Custom Font */
+}
+
+/* ✅ Show dropdown on click */
+.dropdown-menu.show {
+    display: block;
+}
+
+/* ✅ Dropdown Menu Items */
+.dropdown-menu li {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* ✅ Division Line */
+}
+
+/* ✅ Remove border for last item */
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+/* ✅ Dropdown Links (Neon Green) */
+.dropdown-menu li a {
+    text-decoration: none;
+    color: #0aff99; /* Neon Green */
+    font-weight: bold;
+    display: block;
+    font-size: 0.95rem;
+}
+
+/* ✅ Hover Effect */
+.dropdown-menu li a:hover {
+    background: #0aff99; /* Neon Green Background */
+    color: #1b1b3a; /* Dark Blue Text */
+}
+
+/* ✅ Logout Button */
+.logout-btn {
+    background: none;
+    border: none;
+    color: #0aff99; /* Neon Green */
+    font-weight: bold;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    font-family: 'Rajdhani', sans-serif; /* ✅ Custom Font */
+}
+
+/* ✅ Hover Effect for Logout */
+.logout-btn:hover {
+    background: #ff4d4d;
+    color: white;
+}
+
+/* ✅ Profile Page */
+.profile-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    font-family: "Rajdhani", sans-serif;
+}
+
+/* ✅ Header Styling */
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.profile-greeting {
+    font-size: 22px;
+    color: #39ff14;
+    margin-bottom: 10px;
+}
+
+.profile-section-title {
+    font-size: 20px;
+    color: #39ff14;
+    margin-top: 10px;
+}
+
+/* ✅ Separator Line */
+.separator {
+    width: 100%;
+    height: 2px;
+    background-color: #ddd;
+    margin: 8px 0;
+}
+
+/* ✅ Rants Grid Layout */
+.rants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* ✅ Individual Rant Card */
+.rant-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #9d4edd;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.rant-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0aff99;
+}
+
+.rant-content {
+    font-size: 14px;
+    color: #ddd;
+}
+
+.rant-meta {
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* ✅ Empty Rants Section */
+.no-rants-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #9d4edd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.no-rants {
+    font-size: 20px;
+    color: #39ff14;
+    font-weight: bold;
+}
+
+/* ✅ Start a Rant Button */
+.start-rant-btn {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #0aff99;
+    color: #1b1b3a;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.start-rant-btn:hover {
+    background: #0acc80;
+}
+
+.rants-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.rant-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.rant-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.rant-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.rant-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.rant-content {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+.rant-topic {
+    font-size: 14px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.rant-meta {
+    font-size: 12px;
+    color: #777;
+}
+
+
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 20px;
+} */
+
+.rant-thread {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+
+.rant-thread h1 {
+    color: #ff6b6b;
+    margin-bottom: 10px;
+}
+
+.rant-thread p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.replies {
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.reply {
+    background: #2a2a2a;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.reply span {
+    display: block;
+    font-size: 0.9em;
+    color: #bbbbbb;
+    margin-top: 5px;
+}
+
+.replies {
+    margin-top: 20px;
+}
+
+.reply {
+    border-left: 2px solid #444;
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+.replyForm {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.replyForm textarea {
+    width: 100%;
+    height: 60px;
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #222;
+    color: #fff;
+    resize: none;
+}
+
+.replyForm button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    background-color: #ff4500;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.replyForm button:hover {
+    background-color: #e03e00;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.rant-actions {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    margin-top: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+/* Edit Button */
+.edit-btn {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+}
+
+.edit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Delete Button */
+.delete-btn {
+    background-color: #ff4d4d; /* Red */
+    color: white;
+    border: none;
+}
+
+.delete-btn:hover {
+    background-color: #e60000;
+}
+
+/* Ensure the form looks inline */
+.rant-actions form {
+    display: inline;
+}
+
+

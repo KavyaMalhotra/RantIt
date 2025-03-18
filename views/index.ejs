@@ -1,0 +1,20 @@
+<% if (user) { %>
+    <%- include('partials/user_header') %>
+<% } else { %>
+    <%- include('partials/header') %>
+<% } %>
+
+<div class="container">
+    <h1 class="main-heading">Welcome to RantIt</h1>
+    <p>A safe space to rant about life without judgment.</p>
+
+    <div class="content-box">
+        <h2>Feeling Frustrated? Let It Out!</h2>
+        <p>Post your anonymous rants or browse through what others have to say.</p>
+        <button onclick="location.href='/rant'">Start a Rant</button>
+        <button onclick="location.href='/rants'">See Rants</button>
+    </div>
+</div>
+
+<script src="/js/script.js"></script>  <!-- ✅ Include JavaScript -->
+<%- include('partials/footer') %>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Registration</title>
+    <link rel="stylesheet" href="/css/register.css"> 
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-box">
+            <h2>Complete Your Registration</h2>
+            <form action="/google-setup" method="POST">
+                <input type="text" name="name" placeholder="Enter your name" required>
+                <input type="hidden" name="email" value="<%= email %>"> <!-- ✅ Email is auto-filled -->
+                <input type="password" name="password" placeholder="Create a password" required>
+                <button type="submit">Finish Registration</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

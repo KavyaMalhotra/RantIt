@@ -1,0 +1,934 @@
+/* --- Global Styles --- */
+body {
+    background-color: #FFF8E7;  /* Soft Cream */
+    color: #001F3F;             /* Deep Navy for strong contrast */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1, h2 {
+    color: #FFB200;  /* Bright Yellow for warmth and positivity */
+    font-weight: 700;
+}
+
+/* Paragraphs & Content */
+p {
+    font-weight: 400;  /* Regular for clean readability */
+    line-height: 1.6;  /* Improved spacing for comfort */
+}
+
+a {
+    text-decoration: none;
+    color: #EB5B00;  /* Fiery Orange for emphasis */
+}
+
+.container {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+/* --- Main Heading --- */
+.main-heading {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #FFB200;
+}
+
+/* --- Content Box Styling --- */
+.content-box {
+    background-color: #FFF3D6;  /* Softer yellow for warmth */
+    border: 3px solid #EB5B00;  /* Fiery Orange */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.content-box h2 {
+    color: #001F3F;
+    margin-bottom: 15px;
+}
+
+/* --- Button Styling --- */
+button {
+    background-color: #FFB200;  /* Bright Yellow */
+    color: #001F3F;
+    border: 2px solid #EB5B00;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin: 10px;
+    font-weight: bold;
+    font-weight: 600;
+    text-transform: uppercase;  /* Adds confidence and visibility */
+}
+
+button:hover {
+    background-color: #EB5B00;
+    color: #FFFFFF;
+    transform: scale(1.05);
+}
+
+/* --- Navigation Styling --- */
+nav {
+    background-color: #EB5B00;  /* Fiery Orange */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logo h1 {
+    color: #FFFFFF;
+    font-size: 1.8rem;
+}
+
+/* --- Hamburger Menu --- */
+.hamburger {
+    display: none;  /* Hidden by default */
+    font-size: 2rem;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #FFFFFF;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #FFB200;
+    color: #001F3F;
+}
+
+/* --- Footer Styling --- */
+footer {
+    background-color: #E4003A;  /* Vivid Red */
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+/* 📱 Mobile Navigation */
+@media (max-width: 450px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #EB5B00;
+        text-align: center;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+        z-index: 999; /* ✅ Ensures links stay on top */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;  /* Show hamburger icon on small screens */
+        z-index: 1000;   /* ✅ Ensures the hamburger icon stays clickable */
+    }
+
+    .nav-links a {
+        display: block;      /* ✅ Expands clickable area */
+        width: 100%;         /* ✅ Full-width clickable zone */
+        padding: 12px 0;     /* ✅ Larger tap targets for easier clicks */
+        text-align: center;  /* ✅ Ensures text stays centered */
+        box-sizing: border-box; /* Prevents overflow issues */
+    }
+
+    .nav-links li {
+        width: 100%;         /* ✅ Each item fills its row */
+    }
+}
+
+@media (max-width: 450px) {
+    .nav-links {
+        max-height: 100vh;  /* ✅ Ensures the menu can expand fully */
+        overflow-y: auto;   /* ✅ Allows scrolling if menu is longer than the screen */
+    }
+}
+
+
+/* 🟠 Profile Icon */
+.profile-icon {
+    background-color: #FFB200; 
+    color: #001F3F;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Soft Glow */
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-icon:hover {
+    transform: scale(1.1); /* Slight scale-up effect */
+    background-color: #EB5B00;
+    color: #FFFFFF;
+}
+
+/* 🟡 Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1); /* Glass effect */
+    backdrop-filter: blur(10px);          /* Frosted glass effect */
+    border: 2px solid rgba(255, 178, 0, 0.5); /* Subtle border glow */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Soft shadow for depth */
+    overflow: hidden;
+    z-index: 999;
+    width: 200px;
+    padding: 0;
+    transform: translateY(-10px);   /* Default position for smooth slide */
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+
+/* 🔸 Dropdown Items */
+.dropdown-menu li {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+}
+
+.dropdown-menu a,
+.dropdown-menu .logout-btn {
+    display: block;
+    padding: 12px 16px;
+    color: #001F3F;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s ease-in-out, padding-left 0.3s ease-in-out;
+}
+
+/* 🔹 Add Separators */
+.dropdown-menu li:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);  /* Subtle separator */
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu .logout-btn:hover {
+    background-color: #FFB200;
+    color: #001F3F;
+    padding-left: 20px; /* Smooth sliding text effect */
+}
+
+/* 🟢 Show Dropdown */
+.dropdown-menu.show {
+    display: block;
+    transform: translateY(0);
+    opacity: 1; 
+}
+
+/* 🔥 Fade-In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* 📱 Mobile Optimization */
+@media (max-width: 450px) {
+    nav {
+        display: flex;
+        justify-content: space-between;  
+        align-items: center;
+        padding: 10px 20px;
+        position: fixed;         /* Ensures navbar stays visible while scrolling */
+        width: 100%;
+        top: 0;
+        left: 0;
+        height: 60px;
+        background-color: #EB5B00; /* Keep consistent color */
+        z-index: 1000;           /* Ensures navbar is always on top */
+    }
+
+    .nav-links {
+        display: none;  /* Desktop links hidden on mobile */
+    }
+
+    .profile-dropdown {
+        margin-left: auto;      /* Pushes profile icon to the right */
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    .profile-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFB200;
+        color: #001F3F;
+        border: 2px solid #FFFFFF;
+        border-radius: 50%;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        z-index: 1001;  /* Ensures it's above the dropdown */
+    }
+
+    /* 🔹 Dropdown Menu */
+    .dropdown-menu {
+        display: none;             /* Hidden by default */
+        position: absolute;        
+        top: 60px;                 /* Directly below profile icon */
+        right: 0;
+        width: 180px;              /* Slightly wider for better spacing */
+        background: #FFF8E7;
+        border: 2px solid #FFB200;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;             /* Ensures dropdown appears above */
+    }
+
+    .dropdown-menu.show {
+        display: block;  /* Show dropdown when triggered */
+    }
+
+    .dropdown-menu a,
+    .dropdown-menu .logout-btn {
+        display: block;
+        padding: 12px 16px;      /* Improved spacing */
+        color: #001F3F;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s ease, padding-left 0.3s ease;
+    }
+
+    .dropdown-menu a:hover,
+    .dropdown-menu .logout-btn:hover {
+        background-color: #FFB200;
+        color: #001F3F;
+        padding-left: 15px;
+    }
+
+    .dropdown-menu li:not(:last-child) {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    /* 🔥 Scroll Fix */
+    body, html {
+        height: auto;         /* Prevents height lock */
+        min-height: 100vh;    /* Ensures content fits the screen */
+        overflow-y: auto;     /* Enables scrolling */
+        overflow-x: hidden;   /* Prevents horizontal scroll */
+        padding-top: 70px;    /* Prevents content from hiding behind fixed navbar */
+    }
+}
+
+
+
+
+
+
+/* 🟠 Profile Container */
+.profile-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+/* 🌟 Profile Greeting (Elegant Yet Powerful) */
+.profile-greeting {
+    position: relative;
+    top: 5px;
+    left: 0;
+    font-size: 1.8rem;  
+    font-family: 'Poppins', sans-serif;  
+    color: #FF7F3F;             /* Vibrant yet warm orange */
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 5px;          /* Tighter spacing for improved flow */
+}
+
+.profile-greeting::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #FFB200;         /* Bright yellow accent */
+    margin-top: 5px;
+    border-radius: 3px;
+}
+
+/* 👤 Username Style */
+.username {
+    color: #E4003A;             /* Bold magenta for stronger presence */
+    font-weight: 800;
+}
+
+/* 🔥 Profile Card (Clean Floating Design) */
+.profile-card {
+    background: #FFF8E7;         /* Soft warm cream background */
+    border-radius: 16px;
+    padding: 25px 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Soft shadow */
+    margin-top: 30px;            /* Extra space for improved breathing room */
+}
+
+/* 🟣 Profile Avatar */
+.profile-avatar {
+    background: #E4003A;         /* Magenta tone for visual pop */
+    color: #FFFFFF;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;         /* Improved spacing */
+    box-shadow: 0 4px 12px rgba(228, 0, 58, 0.3); /* Subtle glow */
+}
+
+/* 💬 Profile Bio */
+.profile-bio {
+    color: #4A4A4A;             /* Softer, neutral tone for better readability */
+    font-style: italic;
+    font-size: 1rem;
+    margin-top: 9px;             /* Reduced gap for better visual balance */
+}
+
+/* 📋 Rants Section */
+.profile-section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #001F3F;
+    margin-top: 60px;            /* More refined spacing */
+    font-weight: 700;
+}
+
+/* 🔥 Rants Section Grid */
+.rants-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* 🗯️ Rant Card */
+.rant-card {
+    background: linear-gradient(145deg, #FFF8E7, #FFE8B5); 
+    position: relative;
+    padding-bottom: 35px;
+    border: none;  
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 
+        5px 5px 15px rgba(0, 0, 0, 0.15),  /* Outer shadow for depth */
+        -5px -5px 15px rgba(255, 255, 255, 0.6);  /* Inner glow for 3D effect */
+    cursor: pointer; 
+    transition: 
+        transform 0.3s ease-in-out, 
+        box-shadow 0.3s ease-in-out, 
+        background 0.3s ease-in-out;
+}
+
+.rant-card:hover {
+    transform: translateY(-8px) scale(1.03);  
+    background: linear-gradient(145deg, #FFFAEB, #FFF3D6); 
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.3),  
+        0 0 12px rgba(255, 178, 0, 0.5); /* Glowing border effect */
+}
+
+/* 🟡 Rant Title */
+.rant-title {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #EB5B00;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(235, 91, 0, 0.3); /* Subtle text glow */
+}
+
+.rant-card:hover .rant-title {
+    color: #B60071;  /* Magenta for a punchy effect */
+}
+
+/* 📝 Rant Content */
+.rant-content {
+    color: #001F3F;
+    opacity: 0.95;
+    margin: 10px 0;
+    line-height: 1.7;
+    font-weight: 500;
+}
+
+/* 🏷️ Rant Topic (Tag) */
+.rant-topic {
+    background: #B60071;
+    color: #FFF;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* 🕒 Rant Meta (Improved Design) */
+.rant-meta {
+    position: absolute;         /* Positioned within the card */
+    bottom: 10px;               /* Positioned near the card's bottom */
+    right: 15px;                /* Aligned neatly to the right */
+    font-size: 0.75rem;         /* Smaller and subtle */
+    color: #555;                /* Soft grey for reduced emphasis */
+    font-weight: 500;           /* Balanced weight for readability */
+    letter-spacing: 0.5px;      /* Elegant spacing */
+    opacity: 0.8;               /* Softer visibility for a refined look */
+}
+
+/* 🔽 Rant Options (Dropdown Menu) */
+.rant-options {
+    position: absolute; /* ✅ Fixes positioning */
+    top: 10px; /* ✅ Moves to the top */
+    right: 10px; /* ✅ Aligns to the right */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* ⋮ Three-Dot Button */
+.options-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #EB5B00;
+    padding: 5px;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* 🔥 Hover & Click Effects */
+.options-btn:hover {
+    color: #B60071;
+    transform: scale(1.1);
+}
+
+.options-btn:active {
+    transform: scale(0.95);
+}
+
+/* 🔽 Dropdown Styling */
+.options-dropdown {
+    position: absolute;
+    top: 35px; /* ✅ Positioned right below dots */
+    right: 0;
+    background: #FFF8E7;
+    border: 2px solid #FFB200;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    display: none;
+    width: 160px; /* ✅ Fixed width */
+    padding: 5px 0; /* ✅ Adjusted padding */
+    z-index: 20;
+    box-sizing: border-box; /* ✅ Prevents hover expansion */
+}
+
+/* ✅ Buttons Inside Dropdown */
+.options-dropdown button {
+    background: none;
+    border: none;
+    color: #001F3F;
+    padding: 10px; /* ✅ Reduced padding to fit within box */
+    width: 87%;
+    text-align: left;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* ✅ Adds spacing for icons */
+    box-sizing: border-box; /* ✅ Ensures consistent button size */
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* 🔥 Hover Effects */
+.options-dropdown button:hover {
+    background: #FFB200;
+    color: #FFF;
+}
+
+/* 📱 Mobile Optimization */
+@media (max-width: 600px) {
+    .rant-options {
+        top: 5px;
+        right: 5px;
+    }
+
+    .options-dropdown {
+        width: 140px;
+    }
+
+    .options-dropdown button {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+    }
+}
+
+
+
+/* 😢 No Rants Yet */
+.no-rants-container {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(145deg, #FFF3D6, #FFE8B5);
+    border-radius: 15px;
+    margin-top: 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.no-rants {
+    color: #001F3F;
+    font-weight: 500;
+}
+
+.start-rant-btn {
+    display: inline-block;
+    background: #FFB200;
+    color: #001F3F;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.start-rant-btn:hover {
+    background: #EB5B00;
+    color: #FFFFFF;
+    transform: scale(1.05);
+}
+
+
+/* 🔥 Animation for Greeting */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 📱 Mobile Optimization */
+@media (max-width: 600px) {
+    .profile-greeting {
+        font-size: 2rem;
+    }
+
+    .rants-section {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+
+    .rant-card {
+        padding: 15px;
+    }
+}
+
+/* 🌐 Main Rant Container */
+.rant-thread {
+    background: #FFF8E7;
+    border: 2px solid #FFB200;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 30px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 700px;
+    word-break: break-word;
+}
+
+/* 🟠 Title & Topic (Same Row) */
+.rant-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rant-header h1 {
+    color: #EB5B00;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.rant-topic {
+    background: #B60071;
+    color: #FFF;
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+/* 🔹 Separation */
+.separator {
+    border: none;
+    height: 1px;
+    background: #EB5B00;
+    margin: 10px 0;
+}
+
+/* 📄 Main Content */
+.rant-body {
+    color: #001F3F;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+/* ✍ Reply Input (Same Row) */
+.reply-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.reply-box textarea {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #EB5B00;
+    font-size: 1rem;
+    background: #FFFAEB;
+    resize: none;
+}
+
+.reply-box button {
+    background: #FFB200;
+    color: #001F3F;
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.reply-box button:hover {
+    background: #EB5B00;
+    color: #FFF;
+}
+
+/* 📅 Timestamp & Show Replies (Same Row) */
+.rant-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.rant-date {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* 🔄 Reply Card */
+.reply-card {
+    background: #FFF3D6;
+    border-radius: 10px;
+    padding: 12px;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 🟢 Username & Timestamp */
+.reply-header {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #B60071;
+}
+
+.reply-date {
+    font-size: 0.8rem;
+    color: #666;
+    text-align: right;
+}
+
+/* 🌳 Nested Replies */
+.nested-replies {
+    margin-left: 20px;
+    padding-left: 15px;
+    background: #FFFAEB;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* 🟠 Reply Actions */
+.reply-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ✍ Edit, 🗑 Delete & 🔄 Show Replies Buttons */
+.reply-actions button {
+    background: #FFB200; /* Bright yellow like the reply button */
+    color: #001F3F; /* Dark blue for contrast */
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+
+/* 🔥 Hover & Click Effects */
+.reply-actions button:hover {
+    background: #EB5B00; /* Darker orange for hover */
+    color: #FFF;
+}
+
+.reply-actions button:active {
+    transform: scale(0.95);
+}
+
+/* 📱 Mobile Optimization */
+@media (max-width: 600px) {
+    .rant-thread {
+        padding: 20px;
+    }
+
+    .reply-box {
+        flex-direction: column;
+    }
+}
+
+/* 🎛 Filter Dropdown Styling */
+#filterForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px auto;
+    padding: 10px;
+    background: #FFF8E7; /* Soft warm background */
+    border: 2px solid #FFB200;
+    border-radius: 10px;
+    max-width: 400px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+#filterForm label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #EB5B00;
+}
+
+#tags {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #EB5B00;
+    background: #FFFAEB;
+    font-size: 1rem;
+    color: #001F3F;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#tags:hover {
+    border-color: #B60071;
+}
+
+#tags:focus {
+    outline: none;
+    border-color: #B60071;
+    box-shadow: 0 0 8px rgba(182, 0, 113, 0.5);
+}
+
+#feed-heading {
+    text-align: center;
+    font-size: 2.5rem; /* Increased size */
+    font-weight: 800; /* Bolder for impact */
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 30px 0;
+
+    /* Gradient Text Effect */
+    background: linear-gradient(90deg, #FFB200, #EB5B00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Subtle Shadow for Depth */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+
+    /* Animation for a Nice Entrance */
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Keyframe Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🔒 Login to Reply Button */
+.login-to-reply a {
+    display: inline-block;
+    background: #FFB200;
+    color: #001F3F;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.login-to-reply a:hover {
+    background: #EB5B00;
+    color: #FFF;
+    transform: scale(1.05);
+}

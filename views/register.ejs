@@ -1,0 +1,33 @@
+<%- include('partials/register_header') %>
+
+<div class="register-container">
+    <div class="register-box">
+        <h2>Join the Community!</h2>  <!-- 🌟 Warmer Heading -->
+        <form action="/register" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+
+            <input type="password" name="password" placeholder="Create a Password" required>
+            <button type="submit">Register</button>
+        </form>
+
+        <!-- 🔹 OR Separator -->
+        <div class="or-divider">
+            <span>OR</span>
+        </div>
+
+        <!-- 🔥 Register with Google Button -->
+        <div class="google-btn-container">
+            <a href="/auth/google" class="google-btn">
+                <img src="/images/google.png" alt="Google Icon"> 
+                <span class="full-text">Register with Google</span>
+                <span class="short-text">Sign Up</span>  <!-- Hidden by default -->
+            </a>
+        </div>
+
+        <p>Already a member? <a href="/login">Log in here</a></p>
+    </div>
+</div>
+
+</body>
+</html>

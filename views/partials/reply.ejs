@@ -1,0 +1,19 @@
+<li class="reply">
+    <p><%= reply.content %></p>
+    <span>Replied on <%= new Date(reply.created_at).toLocaleDateString() %></span>
+
+    <!-- Reply form for nested replies -->
+    <form class="replyForm" action="/rant/<%= reply.rant_id %>/reply" method="POST">
+        <textarea name="content" placeholder="Reply to this..." required></textarea>
+        <input type="hidden" name="parent_reply_id" value="<%= reply.id %>">
+        <button type="submit">Reply</button>
+    </form>
+
+    <% if (reply.replies.length > 0) { %>
+        <ul>
+            <% reply.replies.forEach(childReply => { %>
+                <%= include('partials/reply', { reply: childReply }) %>
+            <% }); %>
+        </ul>
+    <% } %>
+</li>

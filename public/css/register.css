@@ -1,0 +1,200 @@
+/* 🌍 Full Page Centering */
+body {
+    background-color: #FFF8E7;  /* Soft Cream */
+    color: #001F3F;             /* Deep Navy for text */
+    font-family: 'Poppins', sans-serif; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* 🎯 Centered Register Box */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 90%;
+}
+
+/* 🎭 Register Box */
+.register-box {
+    width: 90%;
+    max-width: 30rem;
+    background: #FFFFFF;        /* Clean white box */
+    border: 3px solid #EB5B00;  /* Fiery Orange */
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/* 🔠 Input Fields */
+.register-box input {
+    width: 90%;
+    padding: 0.75rem;
+    margin: 0.75rem 0;
+    border: 2px solid #B60071; /* Deep Magenta */
+    border-radius: 0.5rem;
+    background: #FFF3D6;       /* Softer yellow for warmth */
+    color: #001F3F;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+}
+
+/* 🌟 Input Focus */
+.register-box input:focus {
+    border-color: #0AFF99;      /* Neon Green Glow */
+    box-shadow: 0 0 0.5rem rgba(10, 255, 153, 0.8);
+}
+
+/* 🔘 Register Button */
+.register-box button {
+    background: #FFB200;
+    color: #001F3F;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* 🔥 Button Hover */
+.register-box button:hover {
+    background: #EB5B00;
+    color: #FFFFFF;
+    transform: scale(1.05);
+}
+
+/* 🔙 Back Button - Visible Only on Larger Screens */
+.back-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: none;
+    color: #EB5B00;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid #EB5B00;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* ➡️ Arrow Animation */
+.back-button::before {
+    content: '⬅';
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+/* 🚀 Hover Effect */
+.back-button:hover {
+    background: #FFB200;
+    color: #001F3F;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 178, 0, 0.7);
+}
+
+/* 🟢 Arrow Slide Effect */
+.back-button:hover::before {
+    transform: translateX(-5px);
+}
+
+/* 🎯 Click/Active Effect */
+.back-button:active {
+    transform: scale(0.95);
+}
+
+/* 📱 Hide on Mobile Devices */
+@media (max-width: 900px) {
+    .back-button {
+        display: none;
+    }
+}
+
+
+/* 🔥 Google Register Button */
+.google-btn-container {
+    text-align: center;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    color: #001F3F;
+    border: 2px solid #B60071;
+    padding: 0.75rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    width: 100%;
+    max-width: 20rem;
+    margin: 1rem auto;
+    box-sizing: border-box;
+    transition: background 0.3s ease-in-out;
+}
+
+.google-btn img {
+    width: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+/* 🔥 Hover Effect */
+.google-btn:hover {
+    background: #B60071;
+    color: #FFFFFF;
+}
+
+
+/* 🟩 Text Management */
+.full-text { display: inline; }  /* Default (Full text on large screens) */
+.short-text { display: none; }   /* Hidden by default */
+
+/* 📱 Show 'Sign Up' on Smaller Screens */
+@media (max-width: 400px) {
+    .full-text { display: none; }  /* Hide full text */
+    .short-text { display: inline; }  /* Show short text */
+    
+    .google-btn {
+        padding: 0.6rem;
+        font-size: 0.9rem;  /* Adjust text size for better spacing */
+    }
+}
+
+/* 📱 Mobile Optimization */
+@media (max-width: 500px) {
+    .google-btn {
+        width: 90%; /* Slightly narrower for tighter spaces */
+    }
+}
+
+
+/* 📱 Mobile Optimization */
+@media (max-width: 600px) {
+    .register-box {
+        padding: 1.5rem;
+    }
+    .register-box input,
+    .register-box button {
+        font-size: 0.9rem;
+    }
+}

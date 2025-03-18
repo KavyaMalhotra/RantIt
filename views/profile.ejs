@@ -1,0 +1,83 @@
+<%- include('partials/user_header') %> <!-- ✅ Include Navbar -->
+
+<div class="profile-container">
+    <!-- ✅ Profile Header -->
+    <div class="profile-header">
+        <div class="profile-card">
+            <div class="profile-avatar"><%= user.alias[0].toUpperCase() %></div>
+            <div class="profile-info">
+                <h1 class="profile-greeting">
+                    <span class="username"><%= user.alias ? user.alias : user.name %></span>'s Profile
+                </h1>
+                <p class="profile-bio">"Your space to vent, reflect, and connect." 💬</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ✅ Rants Section -->
+    <div class="rants-section">
+        <% if (rants.length > 0) { %>
+            <% rants.forEach(rant => { %>
+                <div class="rant-card" onclick="location.href='/thread/<%= rant.id %>'">
+                    <h2 class="rant-title"><%= rant.title %></h2>                
+                    <p class="rant-content">
+                        <%= rant.content.split(' ').slice(0, 5).join(' ') %>
+                        <%= rant.content.split(' ').length > 5 ? ' ...' : '' %>
+                    </p>
+                    <p class="rant-topic"><%= rant.tags %></p>
+                    <span class="rant-meta">Posted on <%= new Date(rant.created_at).toLocaleDateString() %></span>
+
+                    <!-- 📝 Dropdown Menu -->
+                    <div class="rant-options">
+                        <button class="options-btn" onclick="toggleRantDropdown('<%= rant.id %>', event)">⋮</button>
+                        <div class="options-dropdown" id="dropdown-<%= rant.id %>" onclick="event.stopPropagation();">
+                            <form action="/edit-rant/<%= rant.id %>" method="GET" onclick="event.stopPropagation();">
+                                <button type="submit" class="edit-btn">✏️ Edit</button>
+                            </form>
+                            <form action="/delete-rant/<%= rant.id %>" method="POST" onclick="event.stopPropagation();" onsubmit="return confirm('Are you sure you want to delete this rant?');">
+                                <button type="submit" class="delete-btn">🗑️ Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        <% } %>
+    </div>
+
+    <!-- ✅ Show only if there are no rants -->
+    <% if (rants.length === 0) { %>
+        <div class="no-rants-container">
+            <p class="no-rants">Feeling quiet? 🤫 Let it out!</p>
+            <a href="/rant" class="start-rant-btn">Start a Rant</a>
+        </div>
+    <% } %>
+</div>
+
+<script>
+    function toggleRantDropdown(rantId, event) {
+    event.stopPropagation(); // ✅ Prevent click from bubbling to rant-card
+
+    document.querySelectorAll(".options-dropdown").forEach(dropdown => {
+        if (dropdown.id !== `dropdown-${rantId}`) {
+            dropdown.style.display = "none"; // Hide other dropdowns
+        }
+    });
+
+    const dropdown = document.getElementById(`dropdown-${rantId}`);
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+}
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (event) => {
+        if (!event.target.matches(".options-btn")) {
+            document.querySelectorAll(".options-dropdown").forEach(dropdown => {
+                dropdown.style.display = "none";
+            });
+        }
+    });
+</script>
+
+
+<script src="/js/script.js"></script> <!-- ✅ Include JavaScript -->
+</body>
+</html>

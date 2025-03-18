@@ -1,0 +1,5 @@
+flask
+transformers
+torch
+waitress  # For running the API on Windows
+gunicorn  # Only needed if running on Linux/WSL

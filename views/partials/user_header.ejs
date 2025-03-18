@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RantIt</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="/css/style.css">  <!-- ✅ Corrected CSS path -->
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>RantIt</h1>
+            </div>
+
+            <!-- 🔹 Desktop Navigation Links(I think not required) -->
+
+            <!-- 🔹 Profile Dropdown (Moved Outside nav-links for visibility) -->
+            <div class="profile-dropdown">
+                <div class="profile-icon" onclick="toggleDropdown()">
+                    <%= user.alias[0].toUpperCase() + user.alias.split("_")[1][0].toUpperCase() %> 
+                </div>
+
+                <ul class="dropdown-menu" id="dropdown-menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/profile">Your Profile</a></li>
+                    <li>
+                        <form action="/logout" method="POST">
+                            <button type="submit" class="logout-btn">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>

@@ -1,0 +1,31 @@
+<%- include('partials/login-header') %>
+
+<div class="login-container">
+    <div class="login-box">
+        <h2>Login to Your Account</h2>
+        <form action="/login" method="POST">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <input type="password" name="password" placeholder="Enter your password" required>
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="or-divider">
+            <span>OR</span>
+        </div>
+
+        <!-- 🔥 Register with Google Button -->
+        <div class="google-btn-container">
+            <a href="/auth/google" class="google-btn">
+                <img src="/images/google.png" alt="Google Icon"> 
+                <span class="full-text">Login with Google</span>
+                <span class="short-text">Sign In</span>  <!-- Hidden by default -->
+            </a>
+        </div>
+
+
+        <p>Don't have an account? <a href="/register">Register here</a></p>
+    </div>
+</div>
+
+</body>
+</html>

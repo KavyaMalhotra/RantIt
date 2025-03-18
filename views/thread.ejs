@@ -1,0 +1,130 @@
+<% if (user) { %>
+    <%- include('partials/user_header') %>
+<% } else { %>
+    <%- include('partials/header') %>
+<% } %>
+
+<div class="rant-thread">
+    <!-- 🟠 Title & Topic (Same Row) -->
+    <div class="rant-header">
+        <h1><%= rant.title %></h1>
+        <span class="rant-topic"><strong>Topic:</strong> <%= rant.tags %></span>
+    </div>
+
+    <hr class="separator"> <!-- 🔹 Visual separation -->
+
+    <!-- 📄 Main Content -->
+    <p class="rant-body"><%= rant.content %></p>
+
+    <!-- ✍ Reply Input (Same Row) -->
+    <% if (user) { %>
+        <form action="/rant/<%= rant.id %>/reply" method="POST" class="reply-box">
+            <textarea name="content" placeholder="Write a reply..." required></textarea>
+            <input type="hidden" name="parent_reply_id" value="">
+            <button type="submit">Reply</button>
+        </form>
+    <% } else { %>
+        <p class="login-to-reply"><a href="/login">Log in to reply</a></p>
+    <% } %>
+
+    <!-- 📅 Timestamp & Toggle Replies (Same Row) -->
+    <div class="rant-footer">
+        <button id="toggle-main-replies">Show Replies</button>
+        <span class="rant-date">Posted on <%= new Date(rant.created_at).toLocaleDateString() %></span>
+    </div>
+</div>
+
+<!-- 💬 Replies Section -->
+<div class="replies" id="main-replies" style="display: none;">
+    <% if (replies.length > 0) { %>
+        <ul>
+            <% function renderReplies(replies, parentId = null, level = 0) { %>
+                <% replies.filter(r => r.parent_reply_id === parentId).forEach(reply => { %>
+                    <li class="reply-card" style="margin-left: <%= level * 20 %>px;">
+                        <div class="reply-header">
+                            <strong class="reply-username">@<%= reply.user_alias %></strong>
+                        </div>
+                        <p class="reply-content"><%= reply.content %></p>
+
+                        <!-- 🔹 Reply Actions -->
+                        <div class="reply-actions">
+                            <% if (user && user.id === reply.user_id) { %>
+                                <button class="edit-reply-btn" data-reply-id="<%= reply.id %>">Edit</button>
+                                <form action="/delete-reply/<%= reply.id %>" method="POST">
+                                    <button type="submit">Delete</button>
+                                </form>
+                            <% } %>
+                            <button class="toggle-replies-btn" data-reply-id="<%= reply.id %>">Show Replies</button>
+                        </div>
+
+                        <!-- ✍ Nested Reply Input -->
+                        <% if (user) { %>
+                            <form action="/rant/<%= rant.id %>/reply" method="POST" class="reply-box">
+                                <textarea name="content" placeholder="Reply to this..." required></textarea>
+                                <input type="hidden" name="parent_reply_id" value="<%= reply.id %>">
+                                <button type="submit">Reply</button>
+                            </form>
+                        <% } %>
+
+                        <!-- 📅 Timestamp -->
+                        <span class="reply-date">Replied on <%= new Date(reply.created_at).toLocaleDateString() %></span>
+
+                        <!-- 🔄 Nested Replies -->
+                        <ul class="nested-replies" id="nested-replies-<%= reply.id %>" style="display: none;">
+                            <% renderReplies(replies, reply.id, level + 1); %>
+                        </ul>
+                    </li>
+                <% }); %>
+            <% } %>
+            <% renderReplies(replies, null, 0); %>
+        </ul>
+    <% } else { %>
+        <p class="no-replies">No replies yet.</p>
+    <% } %>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const mainReplies = document.getElementById("main-replies");
+        const mainToggleButton = document.getElementById("toggle-main-replies");
+
+        mainToggleButton.addEventListener("click", function() {
+            mainReplies.style.display = mainReplies.style.display === "none" ? "block" : "none";
+            this.textContent = mainReplies.style.display === "none" ? "Show Replies" : "Hide Replies";
+        });
+
+        document.querySelectorAll(".toggle-replies-btn").forEach(button => {
+            button.addEventListener("click", function() {
+                const replyId = this.getAttribute("data-reply-id");
+                const nestedReplies = document.getElementById(`nested-replies-${replyId}`);
+                nestedReplies.style.display = nestedReplies.style.display === "none" ? "block" : "none";
+                this.textContent = nestedReplies.style.display === "none" ? "Show Replies" : "Hide Replies";
+            });
+        });
+
+        document.querySelectorAll(".edit-reply-btn").forEach(button => {
+            button.addEventListener("click", function() {
+                const replyId = this.getAttribute("data-reply-id");
+                document.getElementById(`reply-text-${replyId}`).style.display = "none";
+                document.getElementById(`edit-form-${replyId}`).style.display = "block";
+                this.style.display = "none";
+            });
+        });
+
+        document.querySelectorAll(".cancel-edit-btn").forEach(button => {
+            button.addEventListener("click", function() {
+                const replyId = this.getAttribute("data-reply-id");
+                document.getElementById(`reply-text-${replyId}`).style.display = "block";
+                document.getElementById(`edit-form-${replyId}`).style.display = "none";
+                document.querySelector(`.edit-reply-btn[data-reply-id='${replyId}']`).style.display = "inline";
+            });
+        });
+
+        const flashMessage = document.querySelector(".flash-message");
+        if (flashMessage) {
+            setTimeout(() => { flashMessage.style.display = "none"; }, 5000);
+        }
+    });
+</script>
+
+<script src="/js/script.js"></script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="/css/rant.css">
+    <title>Post a Rant 🗣️</title>
+</head>
+<body>
+    <!-- 🔹 Back Button -->
+    <a href="/" class="back-button">Back</a>
+
+    <div class="rant-container">
+        <h1>Start a Rant 🗣️</h1>
+        <% if (flashMessage) { %>
+            <div class="flash-message">
+                <p><%= flashMessage %></p>
+            </div>
+        <% } %>
+        
+        <form action="/post-rant" method="POST">
+            <!-- 🔹 Rant Title -->
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" placeholder="Enter a catchy title..." required>
+    
+            <!-- 🔹 Rant Content -->
+            <label for="content">Your Rant:</label>
+            <textarea id="content" name="content" rows="5" placeholder="Express yourself..." required></textarea>
+    
+            <!-- 🔹 Rant Topic Selection -->
+            <label for="tags">Choose a Topic:</label>
+            <select id="tags" name="tags" required>
+                <option value="" disabled selected>Select a topic...</option>
+                <option value="Toxic Friends">Toxic Friends</option>
+                <option value="Parental Pressure">Parental Pressure</option>
+                <option value="Relationship Issues">Relationship Issues</option>
+                <option value="Academic & Work Woes">Academic & Work Woes</option>
+                <option value="Society">Society</option>
+                <option value="Crime Fighters">Crime Fighters</option>
+            </select>
+    
+            <!-- 🔹 Submit Button -->
+            <button type="submit" class="rant-btn">Post Rant</button>
+        </form>
+    </div>
+    
+
+</body>
+</html>
