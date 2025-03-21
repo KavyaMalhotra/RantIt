@@ -564,6 +564,54 @@ app.post("/update-rant/:id", async (req, res) => {
     }
 });
 
+app.post("/delete-rant/:id", async (req, res) => {
+    try {
+        // 1️⃣ Check if user is logged in
+        const userId = req.session.user?.id;
+        if (!userId) {
+            req.session.flashMessage = "Unauthorized. Please log in.";
+            return res.redirect("/login");
+        }
+
+        // 2️⃣ Fetch the rant from 'rants' to confirm ownership
+        const rantId = req.params.id;
+        const { rows } = await pool.query(
+            "SELECT * FROM rants WHERE id = $1 AND user_id = $2",
+            [rantId, userId]
+        );
+
+        if (rows.length === 0) {
+            req.session.flashMessage = "Rant not found or you don't have permission to delete it.";
+            return res.redirect("/profile"); 
+        }
+
+        // 3️⃣ Insert the rant into 'deleted_rants'
+        const rant = rows[0];
+        const insertQuery = `
+        INSERT INTO deleted_rants (user_id, title, content, tags, deleted_at)
+        VALUES ($1, $2, $3, $4, NOW());
+    `;
+    await pool.query(insertQuery, [
+        rant.user_id,
+        rant.title,
+        rant.content,
+        rant.tags
+    ]);
+
+        // 4️⃣ Delete the rant from 'rants'
+        await pool.query("DELETE FROM rants WHERE id = $1", [rantId]);
+
+        // 5️⃣ Redirect user with a success message
+        req.session.flashMessage = "Your rant has been deleted.";
+        res.redirect("/profile");
+    } catch (error) {
+        console.error("❌ Error deleting rant:", error);
+        req.session.flashMessage = "Server error. Please try again later.";
+        res.redirect("/profile");
+    }
+});
+
+
 app.post("/delete-reply/:id", async (req, res) => {
     try {
         const replyId = req.params.id;
