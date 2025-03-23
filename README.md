@@ -133,6 +133,10 @@ python moderate.py
 - Reply & Threaded Discussions
 - Simple UI with EJS
 
+
+## Screenshots
+gdrive link: https://drive.google.com/drive/folders/1IklHXAbWzQ-lI6TNq0u-WEJr3SBwMk6j
+
 ## 📜 License
 
 This project is for personal learning and portfolio purposes. Feel free to fork and modify it! You are also welcome to contribute and make it better. 🚀 **Happy Ranting!**
