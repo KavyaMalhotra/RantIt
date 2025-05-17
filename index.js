@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(session({
-    secret: "rantit-secret-key",
+    secret: //your Secret key,
     resave: false,
     saveUninitialized: false,
     cookie: { secure: false }
